@@ -14,31 +14,34 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld />
+      <chart ref="chart" />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import chart from "./components/chart";
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
+    chart,
   },
 
   data: () => ({
     //
     loading: false,
-    dataTime: 0,
+    dataTime: null,
   }),
   methods: {
     dataInit() {
       this.loading = true;
       this.dataTime = new Date();
-      alert("get init data!");
+      this.$refs.chart.data = [
+        { name: "ByteWebBase", cnt: 233 },
+        { name: "ohhhh", cnt: 1234 },
+      ];
       this.loading = false;
     },
   },
