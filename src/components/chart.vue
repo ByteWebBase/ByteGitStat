@@ -2,7 +2,7 @@
   <v-container>
     <v-data-table
       :headers="headers"
-      :items="data"
+      :items="dataList"
       :items-per-page="10"
       class="elevation-1"
     ></v-data-table>
@@ -22,7 +22,7 @@ export default {
       },
       { text: "Commits", value: "cnt" },
     ],
-    data: [],
+    dataList: [],
   }),
 };
 </script>

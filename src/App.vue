@@ -21,6 +21,7 @@
 
 <script>
 import chart from "./components/chart";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -35,13 +36,27 @@ export default {
     dataTime: null,
   }),
   methods: {
+    async updateData() {
+      const baseURL = "https://qcs7l1.fn.thelarkcloud.com/GetCommitData";
+      let newData = [];
+
+      try {
+        const res = await axios({
+          method: "get",
+          url: baseURL,
+          headers: {},
+        });
+        newData = res;
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+      this.$refs.chart.dataList = newData.data;
+    },
     dataInit() {
       this.loading = true;
+      this.updateData();
       this.dataTime = new Date();
-      this.$refs.chart.data = [
-        { name: "ByteWebBase", cnt: 233 },
-        { name: "ohhhh", cnt: 1234 },
-      ];
       this.loading = false;
     },
   },
