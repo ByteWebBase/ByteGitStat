@@ -33,7 +33,7 @@ export default {
   data: () => ({
     //
     loading: false,
-    dataTime: null,
+    dataTime: 'no data',
   }),
   methods: {
     async updateData() {
@@ -48,6 +48,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
+      this.dataTime = new Date();
       this.$refs.chart.isLoading = false;
       this.loading = false;
     },
@@ -55,7 +56,6 @@ export default {
       this.$refs.chart.isLoading = true;
       this.loading = true;
       this.updateData();
-      this.dataTime = new Date();
     },
   },
 };
