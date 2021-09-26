@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="primary" hide-on-scroll dark>
       <div class="d-flex align-center">
         <v-app-bar-title>ByteCommitChart</v-app-bar-title>
       </div>
