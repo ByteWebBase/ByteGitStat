@@ -5,6 +5,8 @@
       :items="dataList"
       :items-per-page="10"
       class="elevation-1"
+      :loading="isLoading"
+      loading-text="Loading... Please wait"
     ></v-data-table>
   </v-container>
 </template>
@@ -22,6 +24,7 @@ export default {
       },
       { text: "Commits", value: "cnt" },
     ],
+    isLoading: false,
     dataList: [],
   }),
 };

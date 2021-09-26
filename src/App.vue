@@ -38,26 +38,24 @@ export default {
   methods: {
     async updateData() {
       const baseURL = "https://qcs7l1.fn.thelarkcloud.com/GetCommitData";
-      let newData = [];
-
       try {
         const res = await axios({
           method: "get",
           url: baseURL,
           headers: {},
         });
-        newData = res;
-        console.log(res.data);
+        this.$refs.chart.dataList = res.data;
       } catch (error) {
         console.log(error);
       }
-      this.$refs.chart.dataList = newData.data;
+      this.$refs.chart.isLoading = false;
+      this.loading = false;
     },
     dataInit() {
+      this.$refs.chart.isLoading = true;
       this.loading = true;
       this.updateData();
       this.dataTime = new Date();
-      this.loading = false;
     },
   },
 };
